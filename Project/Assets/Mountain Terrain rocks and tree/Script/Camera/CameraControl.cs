@@ -34,7 +34,7 @@ public class CameraControl : MonoBehaviour
 
           if (SystemInfo.SupportsRenderTextureFormat(RenderTextureFormat.Depth))
         {
-            Camera.main.depthTextureMode = DepthTextureMode.Depth;
+            //Camera.main.depthTextureMode = DepthTextureMode.Depth;
         }
         else
         {
