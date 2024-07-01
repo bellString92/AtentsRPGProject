@@ -20,7 +20,7 @@ public class NaviMovement : Movement
     {
         
     }
-    protected void DrawPath()
+    protected void DrawPath() //네비게이션을 이용해 위치 이동
     {
         if (myPath != null)
         {
@@ -64,5 +64,18 @@ public class NaviMovement : Movement
         }
         done?.Invoke();
     }
+
+    // 추적
+    public new void FollowTarget(Transform target, CheckAction<float> checkAct,
+        UnityAction act)
+    {
+        if (coMove != null)
+        {
+            StopCoroutine(coMove);
+            coMove = null;
+        }
+        coMove = StartCoroutine(FollowingTarget(target, checkAct, act));
+    }
+
 
 }

@@ -10,6 +10,8 @@ public class EnemyMovement : NaviMovement
     Vector3 startPos;
     Coroutine coRoam = null;
 
+    public Transform myTarget;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -66,6 +68,17 @@ public class EnemyMovement : NaviMovement
             case State.Death:
                 break;
         }
+    }
+    public void OnBattel(Transform target)
+    {
+        myTarget = target;
+        OnChangeState(State.Battle);
+
+    }
+    public void OnNomal()
+    {
+        myTarget = null;
+        OnChangeState(State.Normal);
     }
 
     IEnumerator Roaming()
