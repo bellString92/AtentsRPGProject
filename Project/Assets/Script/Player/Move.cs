@@ -44,6 +44,12 @@ public class Move : AnimatorProperty
         }
     }
 
+    public void ComboStart()
+    {
+        myAnim.ResetTrigger("ComboCheck");
+        myAnim.SetBool("ComboCheck", true);
+    }
+
     public void ComboCheckStart()
     {
         StartCoroutine(ComboCheck());
@@ -51,21 +57,24 @@ public class Move : AnimatorProperty
 
     IEnumerator ComboCheck()
     {
-        myAnim.SetBool("ComboCheck", false);
+        myAnim.SetBool("ComboCheck", true);
         IsComboCheck = true;
         while (IsComboCheck)
         {
             if (Input.GetMouseButton(0))
             {
-                myAnim.SetBool("ComboCheck", true);
+                myAnim.ResetTrigger("ComboCheck");
+                myAnim.SetBool("ComboCheck", false);
+                IsComboCheck = false;
             }
-            IsComboCheck = false;
             yield return null; 
         }
     }
 
     public void ComboCheckEnd()
     {
+        IsComboCheck = false;
+        myAnim.ResetTrigger("ComboCheck");
         myAnim.SetBool("ComboCheck", true);
     }
 }

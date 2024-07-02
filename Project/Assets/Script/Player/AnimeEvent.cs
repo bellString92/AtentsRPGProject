@@ -5,9 +5,15 @@ using UnityEngine.Events;
 
 public class AnimeEvent : MonoBehaviour
 {
+    public UnityEvent ComboStartAct;
     public UnityEvent ComboCheckStartAct;
     public UnityEvent ComboCheckEndAct;
 
+
+    public void ComboStart()
+    {
+        ComboStartAct?.Invoke();
+    }
     public void ComboCheckStart()
     {
         ComboCheckStartAct?.Invoke();
@@ -16,4 +22,5 @@ public class AnimeEvent : MonoBehaviour
     {
         ComboCheckEndAct?.Invoke();
     }
+
 }
