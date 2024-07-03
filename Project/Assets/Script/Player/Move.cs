@@ -2,10 +2,30 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-// 담배피러가자아
+using UnityEngine.Events;
 
-public class Move : AnimatorProperty
+
+public class Move : AnimatorProperty, IBattle
 {
+    //선언
+    public UnityEvent<float> changeHpAct;
+    public BattelState myStat;
+
+
+
+    public bool IsLive
+    {
+        get => true;
+    }
+
+    public void TakeDamage(float dmg)
+    {
+        myStat.curHealthPoint -= dmg;
+        changeHpAct?.Invoke(myStat.getHpValue());
+    }
+
+
+
     public LayerMask enemyMask;
     Vector2 inputDir = Vector2.zero;
     Vector2 desireDiir = Vector2.zero;
@@ -73,5 +93,3 @@ public class Move : AnimatorProperty
         myAnim.SetBool("ComboCheck", true);
     }
 }
-
-//123saasdgjkohas dgliahbsd
