@@ -44,14 +44,10 @@ public class Move : AnimatorProperty
         }
     }
 
-    public void ComboStart()
-    {
-        myAnim.ResetTrigger("ComboCheck");
-        myAnim.SetBool("ComboCheck", true);
-    }
 
     public void ComboCheckStart()
     {
+        myAnim.ResetTrigger("BasicCombo");
         StartCoroutine(ComboCheck());
     }
 
@@ -63,7 +59,6 @@ public class Move : AnimatorProperty
         {
             if (Input.GetMouseButton(0))
             {
-                myAnim.ResetTrigger("ComboCheck");
                 myAnim.SetBool("ComboCheck", false);
                 IsComboCheck = false;
             }
@@ -74,7 +69,6 @@ public class Move : AnimatorProperty
     public void ComboCheckEnd()
     {
         IsComboCheck = false;
-        myAnim.ResetTrigger("ComboCheck");
         myAnim.SetBool("ComboCheck", true);
     }
 }
