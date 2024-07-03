@@ -103,4 +103,22 @@ public class EnemyMovement : BattleSystem
     {
         OnChangeState(State.Death);
     }
+    public void onDisApear()
+    {
+        StartCoroutine(DisApear(0.3f));
+    }
+    IEnumerator DisApear(float downSpeed)
+    {
+        yield return new WaitForSeconds(2.0f);
+        Vector3 dir = Vector3.down;
+        float dist = 1.0f;
+        while (dist > 0.0f)
+        {
+            float delta = downSpeed * Time.deltaTime;
+            transform.Translate(dir * delta);
+            dist -= delta;
+            yield return null;
+        }
+        Destroy(gameObject);
+    }
 }

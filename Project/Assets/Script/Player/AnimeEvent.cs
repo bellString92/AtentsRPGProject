@@ -9,6 +9,8 @@ public class AnimeEvent : MonoBehaviour
     public UnityEvent ComboCheckStartAct;
     public UnityEvent ComboCheckEndAct;
 
+    public UnityEvent attackAct;
+    public UnityEvent deadAct;
 
     public void ComboStart()
     {
@@ -23,4 +25,12 @@ public class AnimeEvent : MonoBehaviour
         ComboCheckEndAct?.Invoke();
     }
 
+    public void OnAttack()
+    {
+        attackAct?.Invoke();
+    }
+    public void OnDead()
+    {
+        deadAct?.Invoke();
+    }
 }

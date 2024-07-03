@@ -12,8 +12,6 @@ public class NaviMovement : Movement
     NavMeshPath myPath;
     Coroutine move = null;
 
-    float attackDelray = 0.0f;
-
 
     // Start is called before the first frame update
     void Start()
@@ -81,22 +79,5 @@ public class NaviMovement : Movement
         }
         coMove = StartCoroutine(FollowingTarget(target, checkAct, act));
     }
-    protected void OnAttack()
-    {
-        if (myAnim.GetBool("IsAttacking") == false)
-        {
-            if (attackDelray >= 2.0f)
-            {
-                attackDelray = 0.0f;
-                myAnim.SetTrigger("OnAttack");
-            }
-        }
-    }
-    protected void BattleUpdate()
-    {
-        if (myAnim.GetBool("IsAttacking") == false)
-        {
-            attackDelray += Time.deltaTime;
-        }
-    }
+   
 }
