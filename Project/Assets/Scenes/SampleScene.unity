@@ -1193,7 +1193,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &304214817
 Transform:
   m_ObjectHideFlags: 0
@@ -3255,6 +3255,7 @@ MonoBehaviour:
   moveSpeed: 1
   RotSpeed: 720
   myState: 0
+  myTarget: {fileID: 0}
 --- !u!4 &1852338654 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 00b7bd1b07ec00947804b4834bae13f5, type: 3}
@@ -3287,6 +3288,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 500d09f0e565f2c41a22c75269b4231c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ComboStartAct:
+    m_PersistentCalls:
+      m_Calls: []
   ComboCheckStartAct:
     m_PersistentCalls:
       m_Calls:

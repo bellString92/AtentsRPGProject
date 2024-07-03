@@ -2,7 +2,8 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-// 담배피러가자아
+// 123123123123
+
 public class Move : AnimatorProperty
 {
     public LayerMask enemyMask;
