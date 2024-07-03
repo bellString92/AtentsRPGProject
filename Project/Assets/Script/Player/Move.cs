@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -37,5 +38,37 @@ public class Move : AnimatorProperty
         {
             myAnim.SetFloat("Run", 1);
         }
+        if (Input.GetMouseButton(0))
+        {
+            myAnim.SetTrigger("BasicCombo");
+        }
+    }
+
+
+    public void ComboCheckStart()
+    {
+        myAnim.ResetTrigger("BasicCombo");
+        StartCoroutine(ComboCheck());
+    }
+
+    IEnumerator ComboCheck()
+    {
+        myAnim.SetBool("ComboCheck", true);
+        IsComboCheck = true;
+        while (IsComboCheck)
+        {
+            if (Input.GetMouseButton(0))
+            {
+                myAnim.SetBool("ComboCheck", false);
+                IsComboCheck = false;
+            }
+            yield return null; 
+        }
+    }
+
+    public void ComboCheckEnd()
+    {
+        IsComboCheck = false;
+        myAnim.SetBool("ComboCheck", true);
     }
 }

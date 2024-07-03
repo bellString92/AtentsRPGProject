@@ -80,6 +80,8 @@ public class Movement : AnimatorProperty
             coRotat = null;
         }
         myAnim.SetBool("IsMoving", false);
+        myAnim.SetBool("IsRunning", false);
+        moveSpeed = 1.0f;
     }
 
     public Coroutine MoveToPos(Vector3 pos, UnityAction done)
@@ -100,7 +102,9 @@ public class Movement : AnimatorProperty
     }
     protected IEnumerator FollowingTarget(Transform target, CheckAction<float> checkAct, UnityAction act)
     {
-        myAnim.SetBool("IsMoving", true);
+        myAnim.SetBool("IsMoving", false);
+        myAnim.SetBool("IsRunning", true);
+        moveSpeed = 3.0f;
         while (target != null)
         {
             UpdateTargetPos(out Vector3 dir, out float dist, target);
@@ -108,12 +112,12 @@ public class Movement : AnimatorProperty
 
             if (checkAct != null && checkAct.Invoke(TargetDist(target)))
             {
-                myAnim.SetBool("IsMoving", false);
+                myAnim.SetBool("IsRunning", false);
                 act?.Invoke();
             }
             else if (myAnim.GetBool("IsAttacking") == false)
             {
-                myAnim.SetBool("IsMoving", true);
+                myAnim.SetBool("IsRunning", true);
                 delta = moveSpeed * Time.deltaTime;
                 if (delta > dist) delta = dist;
                 transform.Translate(dir * delta, Space.World);
@@ -129,6 +133,6 @@ public class Movement : AnimatorProperty
             yield return null;
 
         }
-        myAnim.SetBool("IsMoving", false);
+        myAnim.SetBool("IsRunning", false);
     }
 }

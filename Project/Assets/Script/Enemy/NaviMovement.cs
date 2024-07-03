@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -9,7 +10,11 @@ using static UnityEngine.GraphicsBuffer;
 public class NaviMovement : Movement
 { 
     NavMeshPath myPath;
-    Coroutine move = null;    
+    Coroutine move = null;
+
+    float attackDelray = 0.0f;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -66,7 +71,7 @@ public class NaviMovement : Movement
     }
 
     // ÃßÀû
-    public new void FollowTarget(Transform target, CheckAction<float> checkAct,
+    public void FollowTarget(Transform target, CheckAction<float> checkAct,
         UnityAction act)
     {
         if (coMove != null)
@@ -76,6 +81,22 @@ public class NaviMovement : Movement
         }
         coMove = StartCoroutine(FollowingTarget(target, checkAct, act));
     }
-
-
+    protected void OnAttack()
+    {
+        if (myAnim.GetBool("IsAttacking") == false)
+        {
+            if (attackDelray >= 2.0f)
+            {
+                attackDelray = 0.0f;
+                myAnim.SetTrigger("OnAttack");
+            }
+        }
+    }
+    protected void BattleUpdate()
+    {
+        if (myAnim.GetBool("IsAttacking") == false)
+        {
+            attackDelray += Time.deltaTime;
+        }
+    }
 }

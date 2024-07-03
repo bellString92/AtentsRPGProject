@@ -22,7 +22,7 @@ public class EnemyMovement : NaviMovement
     // Update is called once per frame
     void Update()
     {
-        
+        StateProcess();
     }
 
     void StopRoamCorutine()
@@ -48,7 +48,9 @@ public class EnemyMovement : NaviMovement
                 coRoam = StartCoroutine(Roaming());
                 break;
             case State.Battle:
-
+                StopMoveingCoroutine();
+                StopRoamCorutine();
+                FollowTarget(myTarget, v => v < 2.0f, OnAttack);
                 break;
             case State.Death:
 
@@ -64,6 +66,7 @@ public class EnemyMovement : NaviMovement
             case State.Normal:
                 break;
             case State.Battle:
+                BattleUpdate();
                 break;
             case State.Death:
                 break;

@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 00b7bd1b07ec00947804b4834bae13f5
 ModelImporter:
-  serializedVersion: 21202
+  serializedVersion: 22200
   internalIDToNameTable:
   - first:
       74: -203655887218126122
@@ -72,6 +72,7 @@ ModelImporter:
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
+    importPhysicalCameras: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -99,6 +100,7 @@ ModelImporter:
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
+    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -109,6 +111,8 @@ ModelImporter:
     normalSmoothingSource: 0
   referencedClips:
   - a3fc962223894f3478262f992ec44ee1
+  - 628cf72d82ff4914f88f0f50c1f0a93f
+  - 41f4a75d0c9c6a847bad0e9237f5e7e7
   importAnimation: 1
   humanDescription:
     serializedVersion: 3
@@ -132,6 +136,8 @@ ModelImporter:
   humanoidOversampling: 1
   avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
