@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
-public class EnemyMovement : NaviMovement
+[System.Serializable]
+public class EnemyMovement : BattleSystem
 {
     public enum State { Create, Normal, Battle, Death }
     public State myState = State.Create;
     Vector3 startPos;
     Coroutine coRoam = null;
-
-    public Transform myTarget;
 
     // Start is called before the first frame update
     void Start()
@@ -53,7 +52,8 @@ public class EnemyMovement : NaviMovement
                 FollowTarget(myTarget, v => v < 2.0f, OnAttack);
                 break;
             case State.Death:
-
+                StopAllCoroutines();
+                deadAct?.Invoke();
                 break;
         }
     }
@@ -98,5 +98,9 @@ public class EnemyMovement : NaviMovement
             coRoam = StartCoroutine(Roaming());
         });
 
+    }
+    protected override void OnDead()
+    {
+        OnChangeState(State.Death);
     }
 }
