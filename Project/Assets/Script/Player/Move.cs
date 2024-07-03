@@ -73,3 +73,5 @@ public class Move : AnimatorProperty
         myAnim.SetBool("ComboCheck", true);
     }
 }
+
+//123saasdgjkohas dgliahbsd
