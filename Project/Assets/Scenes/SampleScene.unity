@@ -1164,6 +1164,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: be5995a9158bda9459c22d48acd79a3f, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: e9cbdee5f22a2c04599f72fec6454530, type: 2}
     - target: {fileID: 13700018, guid: be5995a9158bda9459c22d48acd79a3f, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
@@ -1427,6 +1431,7 @@ GameObject:
   m_Component:
   - component: {fileID: 543430834}
   - component: {fileID: 543430833}
+  - component: {fileID: 543430835}
   m_Layer: 0
   m_Name: RangedMonster
   m_TagString: Untagged
@@ -1474,6 +1479,32 @@ Transform:
   - {fileID: 1338794420}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &543430835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543430832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcc5843c3021fd44091005680bd6345f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 1
+  runSpeed: 2
+  RotSpeed: 720
+  myBattleState:
+    AttackRange: 6
+    AttackPoint: 10
+    AttackDelay: 6
+    MaxHealthPoint: 60
+    curHealthPoint: 60
+  deadAct:
+    m_PersistentCalls:
+      m_Calls: []
+  myTarget: {fileID: 0}
+  myState: 0
 --- !u!4 &611323153 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e607c9ea3a77c844db7c1a3f2d180ce1, type: 3}
@@ -2180,6 +2211,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6718e985a0204b24bb5d1863686d68ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  changeHpAct:
+    m_PersistentCalls:
+      m_Calls: []
+  myStat:
+    AttackRange: 0
+    AttackPoint: 0
+    AttackDelay: 0
+    MaxHealthPoint: 0
+    curHealthPoint: 0
   enemyMask:
     serializedVersion: 2
     m_Bits: 0
@@ -2652,7 +2692,7 @@ MonoBehaviour:
   findAct:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1846898542}
+      - m_Target: {fileID: 543430835}
         m_TargetAssemblyTypeName: EnemyMovement, Assembly-CSharp
         m_MethodName: OnBattel
         m_Mode: 0
@@ -2667,7 +2707,7 @@ MonoBehaviour:
   lostAct:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1846898542}
+      - m_Target: {fileID: 543430835}
         m_TargetAssemblyTypeName: EnemyMovement, Assembly-CSharp
         m_MethodName: OnNomal
         m_Mode: 1
@@ -3735,6 +3775,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1
+  runSpeed: 3
   RotSpeed: 720
   myBattleState:
     AttackRange: 2
