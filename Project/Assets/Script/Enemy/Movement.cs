@@ -8,6 +8,7 @@ public delegate bool CheckAction<T>(T v);
 public class Movement : AnimatorProperty
 {
     public float moveSpeed = 1.0f;
+    public float runSpeed = 3.0f;
     public float RotSpeed = 720.0f;
     protected Coroutine coMove = null;
     Coroutine coRotat = null;
@@ -104,7 +105,6 @@ public class Movement : AnimatorProperty
     {
         myAnim.SetBool("IsMoving", false);
         myAnim.SetBool("IsRunning", true);
-        moveSpeed = 3.0f;
         while (target != null)
         {
             UpdateTargetPos(out Vector3 dir, out float dist, target);
@@ -118,7 +118,7 @@ public class Movement : AnimatorProperty
             else if (myAnim.GetBool("IsAttacking") == false)
             {
                 myAnim.SetBool("IsRunning", true);
-                delta = moveSpeed * Time.deltaTime;
+                delta = runSpeed * Time.deltaTime;
                 if (delta > dist) delta = dist;
                 transform.Translate(dir * delta, Space.World);
             }
