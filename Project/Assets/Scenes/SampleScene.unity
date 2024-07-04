@@ -1495,9 +1495,9 @@ MonoBehaviour:
   runSpeed: 2
   RotSpeed: 720
   myBattleState:
-    AttackRange: 6
+    AttackRange: 4
     AttackPoint: 10
-    AttackDelay: 6
+    AttackDelay: 4
     MaxHealthPoint: 60
     curHealthPoint: 60
   deadAct:
@@ -2738,7 +2738,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 8
+  m_Radius: 10
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1394723324 stripped
 Transform:
@@ -3778,7 +3778,7 @@ MonoBehaviour:
   runSpeed: 3
   RotSpeed: 720
   myBattleState:
-    AttackRange: 2
+    AttackRange: 1.5
     AttackPoint: 10
     AttackDelay: 2
     MaxHealthPoint: 100

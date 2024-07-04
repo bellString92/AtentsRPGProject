@@ -49,7 +49,7 @@ public class EnemyMovement : BattleSystem
             case State.Battle:
                 StopMoveingCoroutine();
                 StopRoamCorutine();
-                FollowTarget(myTarget, v => v < 2.0f, OnAttack);
+                FollowTarget(myTarget, v => v < myBattleState.AttackRange, OnAttack);
                 break;
             case State.Death:
                 StopAllCoroutines();
